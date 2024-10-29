@@ -19,6 +19,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+            .csrf().disable()  // Disable CSRF protection
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/users/admin/**").hasRole("ADMIN")  // Solo el admin puede acceder a estos endpoints
                 .requestMatchers("/users/**").hasAnyRole("ADMIN", "USER")  // Ambos roles pueden acceder a estos endpoints
