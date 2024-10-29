@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.security.core.Authentication;
 
 @RestController
 @RequestMapping("/users")
@@ -88,6 +89,14 @@ public class UserController {
         userService.deleteUser(id);
     }
 
+    @GetMapping("/checkRole")
+    public String checkUserRole(Authentication authentication) {
+        if (authentication.getAuthorities().stream().anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"))) {
+            return "Hello Admin!";
+        } else {
+            return "Hello User!";
+        }
+    }
 
     static class ErrorResponse {
         private final String message;
