@@ -8,8 +8,6 @@ services:
       - "8080:8080"
     environment:
       - spring.datasource.url=jdbc:oracle:thin:@ndv6jv3gqzu7aa12_tp?TNS_ADMIN=/app/oracle_wallet/
-      - spring.datasource.username=java_bd
-      - spring.datasource.password=ClaseFullStack1-
+      - spring.datasource.username=Admin
+      - spring.datasource.password=Oraclecloud.7895
     restart: always
-
- 
